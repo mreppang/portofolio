@@ -118,7 +118,7 @@ export default function ContactPage() {
                 {
                   icon: "📍",
                   title: "Lokasi",
-                  value: "Indonesia",
+                  value: "Makassar",
                   description:
                     "Bisa bekerja sama secara remote maupun offline.",
                 },
