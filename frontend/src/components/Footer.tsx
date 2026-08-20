@@ -1,9 +1,12 @@
 import Link from "next/link";
 
 const quickLinks = [
-  { href: "/", label: "Home" },
+ { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/portfolio", label: "Portfolio" },
+  { href: "/skills", label: "Skills" },
+  { href: "/certificates", label: "Certificates" },
+  { href: "/testimonials", label: "Testimonials" },
   { href: "/contact", label: "Contact" },
 ];
 

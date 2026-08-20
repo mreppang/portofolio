@@ -44,57 +44,12 @@ export interface Testimonial {
 const projects: Project[] = [
   {
     id: 1,
-    title: "E-commerce Web Application",
+    title: "Frezz-Laundry",
     category: "Web Dev",
-    description: "A full-featured e-commerce platform with cart, payment gateway, and admin panel.",
+    description: "Aplikasi web untuk manajemen laundry, memungkinkan pengguna untuk memesan layanan laundry secara online, melacak status pesanan, dan mengelola pembayaran.",
     tech: ["Next.js", "React", "Tailwind CSS", "Express.js", "MySQL"],
     demoUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    id: 2,
-    title: "Attendance App with GPS",
-    category: "Mobile App",
-    description: "Mobile application for employee attendance tracking with geo-tagging and face detection.",
-    tech: ["React Native", "Expo", "Node.js", "MongoDB"],
-    demoUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    id: 3,
-    title: "School Management System Dashboard",
-    category: "UI/UX",
-    description: "Intelligent UI/UX design prototype for managing school courses, students, and grading system.",
-    tech: ["Figma", "UI Design", "Prototyping"],
-    demoUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    id: 4,
-    title: "Personal Landing Page Portfolio",
-    category: "Web Dev",
-    description: "Highly responsive, premium dark-themed portfolio site built with speed and animations.",
-    tech: ["HTML5", "Vanilla JS", "Tailwind CSS"],
-    demoUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    id: 5,
-    title: "Task Management Mobile App",
-    category: "Mobile App",
-    description: "Cross-platform mobile app to track tasks, organize projects, and collaborate with team members.",
-    tech: ["Flutter", "Dart", "Firebase"],
-    demoUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    id: 6,
-    title: "Smart Home Control Interface",
-    category: "UI/UX",
-    description: "Modern dark-themed dashboard design for smart home appliance monitoring.",
-    tech: ["Figma", "Interaction Design"],
-    demoUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/mreppang/Frezz-laundry",
   },
 ];
 
@@ -159,9 +114,9 @@ const certificates: Certificate[] = [
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Drs. Eko Prasetyo",
-    role: "Kepala Jurusan RPL",
-    company: "SMK Negeri 1",
+    name: "Muh.SAAD",
+    role: "Kepala Sekolah SMK TELKOM MAKASSAR",
+    company: "SMK Telkom Makassar",
     avatar: "👨‍🏫",
     stars: 5,
     quote:
@@ -169,23 +124,43 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 2,
-    name: "Rian Ardiansyah",
-    role: "Teman Sekelas / Ketua Kelas",
-    company: "XII RPL 1",
+    name: "FARID IRWANDI",
+    role: "Kepala prodi rpl smk telkom makassar",
+    company: "SMK Telkom Makassar",
     avatar: "🧑",
     stars: 5,
     quote:
-      "Belajar kelompok bareng Revan selalu asik. Dia pintar menjelaskan konsep pemrograman yang susah dengan bahasa yang gampang dimengerti oleh teman-teman.",
+      "Revan adalah siswa yang sangat berdedikasi dan memiliki pemahaman mendalam tentang pengembangan web. Dia selalu berusaha untuk meningkatkan keterampilannya dan memberikan kontribusi yang signifikan dalam proyek-proyek sekolah.",
   },
   {
     id: 3,
-    name: "Siti Rahmawati",
-    role: "Guru Produktif Web & Mobile",
-    company: "SMK Negeri 1",
+    name: "Oktavianto",
+    role: "Guru Produktif Frontend & mpp",
+    company: "SMK Telkom Makassar",
     avatar: "👩‍🏫",
     stars: 5,
     quote:
-      "Pemahaman Revan terhadap framework Next.js dan Tailwind CSS di usianya sekarang sangat mengagumkan. Proyek-proyeknya dikerjakan dengan rapi dan konsisten.",
+      "Revan adalah siswa yang sangat berbakat dan berdedikasi. Dia memiliki kemampuan teknis yang kuat dan selalu berusaha untuk belajar hal-hal baru. Saya yakin dia akan menjadi seorang profesional yang sukses di bidang pengembangan web.",
+  },
+  {
+    id: 4,
+    name: "Ali Akbar",
+    role: "Guru Produktif Backend",
+    company: "SMK Telkom Makassar",
+    avatar: "👩‍🏫",
+    stars: 5,
+    quote:
+      "Revan adalah siswa yang sangat berbakat dan berdedikasi. Dia memiliki kemampuan teknis yang kuat dan selalu berusaha untuk belajar hal-hal baru. Saya yakin dia akan menjadi seorang profesional yang sukses di bidang pengembangan web.",
+  },
+  {
+    id: 5,
+    name: "Alif anhar",
+    role: "Guru Produktif Backend",
+    company: "SMK Telkom Makassar",
+    avatar: "👩‍🏫",
+    stars: 5,
+    quote:
+      "Revan adalah siswa yang sangat berbakat dan berdedikasi. Dia memiliki kemampuan teknis yang kuat dan selalu berusaha untuk belajar hal-hal baru. Saya yakin dia akan menjadi seorang profesional yang sukses di bidang pengembangan web.",
   },
 ];
 

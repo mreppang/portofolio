@@ -42,7 +42,7 @@ export default function TestimonialPage() {
               ))
             : testimonialsList.map((test) => (
                 <div
-                  key={test.id}
+                  key={`testimonial-${test.id}-${test.name}`}
                   className="p-6 rounded-2xl bg-gray-900/50 border border-gray-800/50 hover:border-indigo-500/30 transition-all duration-300"
                 >
                   <div>

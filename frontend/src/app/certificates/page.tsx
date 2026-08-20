@@ -46,7 +46,7 @@ export default function CertificatePage() {
               ))
             : certificatesList.map((cert) => (
                 <div
-                  key={cert.id}
+                  key={`certificate-${cert.id}-${cert.title}`}
                   className="group rounded-2xl bg-gray-900/50 border border-gray-800/50 hover:border-indigo-500/30 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
                 >
                   {/* Foto Sertifikat */}
