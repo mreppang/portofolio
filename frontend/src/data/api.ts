@@ -106,9 +106,9 @@ export async function fetchTestimonials(): Promise<Testimonial[]> {
     name: item.name,
     role: item.role,
     company: item.company,
-    avatar: item.avatar,
-    stars: item.stars,
-    quote: item.quote,
+    avatar: item.avatar_url ?? item.avatar ?? "👤",
+    stars: item.rating ?? item.stars ?? 5,
+    quote: item.content ?? item.quote ?? "",
   }));
 }
 

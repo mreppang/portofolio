@@ -15,6 +15,7 @@ export default function TestimonialPage() {
         setLoading(true);
         const data = await fetchTestimonials();
         setTestimonialsList(data);
+        console.log("Fetched testimonials:", data);
       } catch (error) {
         console.error("Failed to fetch testimonials:", error);
       } finally {
@@ -48,7 +49,7 @@ export default function TestimonialPage() {
                 >
                   <div>
                     <div className="flex gap-1 mb-6">
-                      {Array.from({ length: test.stars }).map((_, i) => (
+                      {Array.from({ length: Number(test.stars) || 5 }).map((_, i) => (
                         <span key={i} className="text-amber-400 text-lg">
                           ★
                         </span>
@@ -56,13 +57,21 @@ export default function TestimonialPage() {
                     </div>
 
                     <blockquote className="text-gray-300 italic leading-relaxed text-sm sm:text-base mb-8">
-                      &quot;{test.quote}&quot;
+                      &quot;{test.quote || "-"}&quot;
                     </blockquote>
                   </div>
 
                   <div className="flex items-center gap-4 pt-4 border-t border-gray-800/50">
-                    <div className="w-12 h-12 rounded-full bg-indigo-500/10 flex items-center justify-center text-2xl shrink-0 border border-gray-800">
-                      {test.avatar}
+                    <div className="w-12 h-12 rounded-full bg-indigo-500/10 flex items-center justify-center text-2xl shrink-0 border border-gray-800 overflow-hidden">
+                      {test.avatar?.startsWith("http") ? (
+                        <img
+                          src={test.avatar}
+                          alt={test.name}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        test.avatar
+                      )}
                     </div>
                     <div>
                       <h4 className="text-sm font-bold text-white leading-none">

@@ -102,7 +102,7 @@ const certificates: Certificate[] = [
   {
     id: 2,
     title: "Ai Class ASEAN",
-    issuer: "ASEA FOUNDATION",
+    issuer: "ASEAN FOUNDATION",
     date: "May 30 , 2026",
     credentialId: "",
     verificationUrl: "https://www.AiClassASEAN.org",
