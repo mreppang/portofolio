@@ -9,4 +9,4 @@ const getAllCertificates = (callback) => {
 
 module.exports = {
     getAllCertificates,
-};
+};  

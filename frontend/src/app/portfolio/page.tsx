@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getProjects, Project } from "@/data/mockData";
+import { fetchProjects } from "@/data/api";
+import { Project } from "@/data/mockData";
 import SkeletonCard from "@/components/SkeletonCard";
 
 const categories = ["All", "Web Dev", "Mobile App", "UI/UX"];
@@ -12,10 +13,10 @@ export default function PortfolioPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchProjects() {
+    async function fetchProjectsData() {
       try {
         setLoading(true);
-        const data = await getProjects();
+        const data = await fetchProjects();
         setProjectsList(data);
       } catch (error) {
         console.error("Failed to fetch projects:", error);
@@ -23,7 +24,7 @@ export default function PortfolioPage() {
         setLoading(false);
       }
     }
-    fetchProjects();
+    fetchProjectsData();
   }, []);
 
   const filteredProjects =
@@ -34,10 +35,10 @@ export default function PortfolioPage() {
   return (
     <section className="py-16 sm:py-20 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
             My{" "}
-            <span className="bg-linear-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
               Projects
             </span>
           </h1>
@@ -53,7 +54,7 @@ export default function PortfolioPage() {
               onClick={() => setSelectedCategory(category)}
               className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer ${
                 selectedCategory === category
-                  ? "bg-linear-to-r from-indigo-500 to-violet-500 text-white shadow-lg shadow-indigo-500/25"
+                  ? "bg-gradient-to-r from-indigo-500 to-violet-500 text-white shadow-lg shadow-indigo-500/25"
                   : "bg-gray-900/50 border border-gray-800 text-gray-400 hover:text-white hover:border-gray-700"
               }`}
             >
@@ -64,15 +65,15 @@ export default function PortfolioPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {loading
-            ? Array.from({ length: 6 }).map((_, idx) => (
-                <SkeletonCard key={idx} variant="project" />
+            ? Array.from({ length: 6 }).map((_, i) => (
+                <SkeletonCard key={i} variant="project" />
               ))
             : filteredProjects.map((project) => (
                 <div
                   key={project.id}
-                  className="flex flex-col h-full rounded-2xl bg-gray-900/50 border border-gray-800/50 overflow-hidden hover:border-indigo-500/30 transition-all duration-300 group"
+                  className="flex flex-col h-full rounded-2xl bg-gray-900/50 border border-gray-800/50 overflow-hidden hover:border-indigo-500/50 transition-colors group"
                 >
-                  <div className="aspect-video bg-gradient-to-br from-indigo-500/10 to-violet-500/10 flex items-center justify-center border-b border-gray-800/40 group-hover:from-indigo-500/15 group-hover:to-violet-500/15 transition-all duration-300">
+                  <div className="aspect-video bg-gradient-to-br from-indigo-500/10 to-violet-500/10 flex items-center justify-center border-b border-gray-800/50">
                     <span className="text-4xl group-hover:scale-110 transition-transform duration-300">
                       🚀
                     </span>
@@ -101,18 +102,26 @@ export default function PortfolioPage() {
                     </div>
 
                     <div className="flex items-center gap-4 pt-4 border-t border-gray-800/50 mt-auto">
-                      <a
-                        href={project.demoUrl}
-                        className="text-sm font-semibold text-white hover:text-indigo-400 transition-colors duration-300 flex items-center gap-1"
-                      >
-                        Live Demo <span className="text-xs">↗</span>
-                      </a>
-                      <a
-                        href={project.githubUrl}
-                        className="text-sm font-semibold text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-1"
-                      >
-                        GitHub <span className="text-xs">↗</span>
-                      </a>
+                      {project.demoUrl && (
+                        <a
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm font-semibold text-white hover:text-indigo-400 transition-colors duration-300 flex items-center gap-1"
+                        >
+                          Live Demo <span className="text-xs">↗</span>
+                        </a>
+                      )}
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm font-semibold text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-1"
+                        >
+                          GitHub <span className="text-xs">↗</span>
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>

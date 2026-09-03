@@ -48,7 +48,7 @@ const projects: Project[] = [
     category: "Web Dev",
     description: "Aplikasi web untuk manajemen laundry, memungkinkan pengguna untuk memesan layanan laundry secara online, melacak status pesanan, dan mengelola pembayaran.",
     tech: ["Next.js", "React", "Tailwind CSS", "Express.js", "MySQL"],
-    demoUrl: "#",
+    demoUrl: "https://frezz-laundry.vercel.app",
     githubUrl: "https://github.com/mreppang/Frezz-laundry",
   },
 ];

@@ -1,17 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getSkills, SkillGroup } from "@/data/mockData";
+import { fetchSkills } from "@/data/api";
+import { SkillGroup } from "@/data/mockData";
 
 export default function SkillsPage() {
   const [skillGroupsList, setSkillGroupsList] = useState<SkillGroup[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchSkills() {
+    async function fetchSkillsData() {
       try {
         setLoading(true);
-        const data = await getSkills();
+        const data = await fetchSkills();
         setSkillGroupsList(data);
       } catch (error) {
         console.error("Failed to fetch skills:", error);
@@ -19,7 +20,7 @@ export default function SkillsPage() {
         setLoading(false);
       }
     }
-    fetchSkills();
+    fetchSkillsData();
   }, []);
 
   return (
@@ -28,7 +29,7 @@ export default function SkillsPage() {
         <div className="text-center mb-16">
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
             My{" "}
-            <span className="bg-linear-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
               Skills
             </span>
           </h1>
@@ -45,9 +46,10 @@ export default function SkillsPage() {
                   className="p-6 sm:p-8 rounded-2xl bg-gray-900/40 border border-gray-800/40 animate-pulse"
                 >
                   <div className="flex items-center gap-3 mb-8 pb-4 border-b border-gray-800/40">
-                    <div className="w-8 h-8 bg-gray-800 rounded" />
+                    <div className="w-8 h-8 rounded bg-gray-800" />
                     <div className="h-6 bg-gray-800 rounded w-1/2" />
                   </div>
+
                   <div className="space-y-6">
                     {[1, 2, 3, 4].map((i) => (
                       <div key={i}>
@@ -82,9 +84,11 @@ export default function SkillsPage() {
                             {skill.level}
                           </span>
                         </div>
+
                         <div className="w-full h-2 rounded-full bg-gray-800 overflow-hidden">
+                          {/* Progress Bar Indicator */}
                           <div
-                            className="h-full bg-linear-to-r from-indigo-500 to-violet-500 rounded-full transition-all duration-1000 ease-out"
+                            className="h-full bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full transition-all duration-1000 ease-out"
                             style={{ width: `${skill.percentage}%` }}
                           />
                         </div>

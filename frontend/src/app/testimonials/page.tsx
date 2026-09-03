@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getTestimonials, Testimonial } from "@/data/mockData";
+import { fetchTestimonials } from "@/data/api";
+import { Testimonial } from "@/data/mockData";
 import SkeletonCard from "@/components/SkeletonCard";
 
 export default function TestimonialPage() {
@@ -9,10 +10,10 @@ export default function TestimonialPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchTestimonials() {
+    async function fetchTestimonialsData() {
       try {
         setLoading(true);
-        const data = await getTestimonials();
+        const data = await fetchTestimonials();
         setTestimonialsList(data);
       } catch (error) {
         console.error("Failed to fetch testimonials:", error);
@@ -20,7 +21,7 @@ export default function TestimonialPage() {
         setLoading(false);
       }
     }
-    fetchTestimonials();
+    fetchTestimonialsData();
   }, []);
 
   return (
@@ -37,13 +38,13 @@ export default function TestimonialPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {loading
-            ? Array.from({ length: 3 }).map((_, idx) => (
-                <SkeletonCard key={idx} variant="testimonial" />
+            ? Array.from({ length: 3 }).map((_, i) => (
+                <SkeletonCard key={i} variant="testimonial" />
               ))
             : testimonialsList.map((test) => (
                 <div
-                  key={`testimonial-${test.id}-${test.name}`}
-                  className="p-6 rounded-2xl bg-gray-900/50 border border-gray-800/50 hover:border-indigo-500/30 transition-all duration-300"
+                  key={test.id}
+                  className="p-6 sm:p-8 rounded-2xl bg-gray-900/50 border border-gray-800/50 hover:border-indigo-500/30 transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex gap-1 mb-6">
@@ -60,7 +61,7 @@ export default function TestimonialPage() {
                   </div>
 
                   <div className="flex items-center gap-4 pt-4 border-t border-gray-800/50">
-                    <div className="w-12 h-12 rounded-full bg-indigo-500/10 flex items-center justify-center text-2xl shrink-0 border border-gray-800/50">
+                    <div className="w-12 h-12 rounded-full bg-indigo-500/10 flex items-center justify-center text-2xl shrink-0 border border-gray-800">
                       {test.avatar}
                     </div>
                     <div>
